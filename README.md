@@ -1,16 +1,20 @@
+<p align="center">
+  <img src="assets/skilloom.png" alt="Skilloom" width="480">
+</p>
+
 <h1 align="center">Skilloom</h1>
 
 <p align="center">
   <strong>A loom for agent skills.</strong><br>
-  Weave a skill from work you already finished. Keep the threads that hold. Cut the rest.
+  Make a skill from work you already finished. Keep what holds. Cut the rest.
 </p>
 
 <p align="center">
   <a href="README.ko.md">한국어</a> ·
-  <a href="#the-four-skills">Skills</a> ·
-  <a href="#principles">Principles</a> ·
+  <a href="#skills">Skills</a> ·
   <a href="#install">Install</a> ·
-  <a href="#for-contributors">Contribute</a>
+  <a href="#use">Use</a> ·
+  <a href="#contributing">Contributing</a>
 </p>
 
 <p align="center">
@@ -21,38 +25,27 @@
 
 ---
 
-## Why a loom
+Skills get long. Every fix adds a sentence, every edge case adds a rule, and soon a capable model has to read past a wall of instructions to do its job.
 
-A loom holds a few fixed threads, the warp, under tension. Everything else is woven across them.
+Skilloom goes the other way. It starts from evidence you already have, work you accepted and feedback you gave, and keeps only what the result depends on. The model gets to decide the rest.
 
-Skills fail the same way cloth does: not from too little, but from too much. Every fix adds a sentence, every edge case adds a rule, and one day the skill is a wall of instructions that a capable model has to read past to do its job.
+## Skills
 
-Skilloom treats the essential requirements as the warp and leaves the weaving to the model. It starts from evidence you already have, work you accepted, feedback you gave, runs that failed, and keeps only what the result depends on.
+Four skills, one for each stage of a skill's life. Each installs and runs on its own.
 
-## The four skills
-
-Each skill is one motion on the loom. They install and run independently.
-
-| Skill | Motion | Use it to |
+| Skill | | Use it to |
 | --- | --- | --- |
 | [**distill**](skills/distill/README.md) | Spin | Turn a task you just finished and approved into a reusable skill. |
-| [**refine**](skills/refine/README.md) | Tighten | Restructure one verbose or overprescriptive skill around its purpose. |
+| [**refine**](skills/refine/README.md) | Tighten | Restructure one verbose skill around its purpose. |
 | [**evolve**](skills/evolve/README.md) | Mend | Fix what actually went wrong in use, with the smallest change the evidence supports. |
-| [**consolidate**](skills/consolidate/README.md) | Join | Merge overlapping skills without losing any capability that worked. |
+| [**consolidate**](skills/consolidate/README.md) | Join | Merge overlapping skills without losing what worked. |
 
-Together they cover a skill's whole life: create it from real work, clean it up, repair it from real runs, and fold duplicates back together.
+A few things they all share:
 
-## Principles
-
-These are not slogans. Each one is written into the skills as an instruction.
-
-- **Review deletion first.** Before adding a rule, ask whether removing one would cost an accepted requirement. If not, delete it. Excess is never moved into a reference file to hide it.
-- **Trust the model with the how.** Specify the outcome, the decisive constraints, and what done looks like. Leave tools, languages, and implementation choices open.
-- **Evidence over intuition.** Accepted deliverables, corrections, and execution records are the input. Missing history is asked for, never invented.
-- **Code checks what code can. People judge the rest.** Every generated skill carries its own checks and a short list of human review questions. Counts and formatting never stand in for correctness or taste.
-- **Silence is not approval.** The gates that need your confirmation wait for it. The ones that don't are not added.
-- **Shorter is not the same as better.** A leaner file is a structural cleanup. A measured improvement needs a comparison under comparable conditions. The skills report which one they did.
-- **No change is a valid result.** If the evidence does not support an edit, the skill stays as it is, and the report says why.
+- Deletion is reviewed before addition.
+- Code checks what code can. You judge the rest, from a short list of questions.
+- A shorter file is not called an improvement until it has been compared.
+- Leaving a skill unchanged is a valid result.
 
 ## Install
 
@@ -62,13 +55,13 @@ Paste this into your coding agent:
 Clone https://github.com/boaz-hwang/skilloom and install each of the four folders under skills/ as a separate skill in your skills directory.
 ```
 
-Skills follow the [Agent Skills](https://github.com/agentskills/agentskills) format, so they work with any client that reads a `SKILL.md`.
+Skills follow the [Agent Skills](https://github.com/agentskills/agentskills) format and work with any client that reads a `SKILL.md`.
 
 If you installed distill from this repository's root in an earlier version, reinstall it from `skills/distill`.
 
 ## Use
 
-Invoke the skill that matches the moment. Each skill's README has a copyable request.
+Call the skill that fits the moment. Each skill's README has a copyable request.
 
 ```text
 Use distill to turn this task into a reusable skill.
@@ -91,9 +84,9 @@ Recommended models:
 - Fable 5.1
 - Astra 6
 
-## For contributors
+## Contributing
 
-The repository ships a format validator and tests. They check structure and Python syntax, never outcome quality; that part is left to the behavioral scenarios in `evals/`, which are run by hand.
+The validator and tests check structure and Python syntax only. Outcome quality is checked by hand with the scenarios in `evals/`.
 
 ```bash
 python -m pip install -r requirements-dev.txt
@@ -101,9 +94,7 @@ python tools/validate_skill.py skills/distill
 python -m unittest discover -s tests -v
 ```
 
-CI runs the same validation on every push and pull request.
-
-Contributions that make a skill shorter without losing a requirement are welcome. So are contributions that add a requirement the evidence shows was missing. Please bring the evidence.
+CI runs the same checks on every push and pull request. Changes that make a skill shorter without losing a requirement are welcome. Bring the evidence.
 
 ## License
 
