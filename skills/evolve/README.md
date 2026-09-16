@@ -4,7 +4,7 @@ Improve a skill from how it actually performed.
 
 [한국어](README.ko.md) · [Skill instructions](SKILL.md) · [MIT](LICENSE)
 
-Evolve reviews one skill's execution records, fixes observed failures and wasted effort, and keeps changes local. Deletion comes first in review; preserving quality comes first in adoption.
+Evolve reviews one skill's execution records, fixes observed failures and wasted effort, and keeps changes local. Review starts with deletion. A change is adopted only when existing quality is preserved.
 
 ## Install
 
@@ -30,4 +30,4 @@ Use evolve to review <skill-name>'s execution records and make the smallest impr
 
 Confirmed improvements are applied. Unconfirmed candidates stay separate for further evaluation. If no useful change is supported, the skill stays as it is.
 
-Evolve targets observed problems in one skill. Whole-skill restructuring and combining multiple skills are separate tasks.
+Evolve targets observed problems in one skill. Whole-skill restructuring is refine's job, and combining skills is consolidate's.

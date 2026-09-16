@@ -4,7 +4,7 @@ Turn the task you just completed into a skill.
 
 [한국어](README.ko.md) · [Skill instructions](SKILL.md) · [MIT](LICENSE)
 
-You get a skill that performs the task for you when you invoke it. Distill extracts the essentials from the result and feedback in a completed work session.
+You get a skill that performs the task for you when you invoke it. Distill reads the result and feedback from a completed session and keeps only the conditions needed to reproduce it. Failed paths and detours are left out.
 
 ## Install
 

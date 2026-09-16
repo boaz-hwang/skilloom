@@ -25,4 +25,4 @@ Use consolidate to review <skill-folder>, propose suitable merges, and consolida
 3. Build minimal replacements and verify capabilities from each source.
 4. Apply the approved mapping, retire approved duplicates, and preserve rollback.
 
-If preservation cannot be verified, keep the originals active and leave a separate candidate. No merge is also a valid result.
+If preservation cannot be verified, the originals stay active and the candidate is kept separately. Finding nothing to merge is also a valid result.

@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>A loom for agent skills.</strong><br>
-  Make a skill from work you already finished. Keep what holds. Cut the rest.
+  Make a skill from work you already finished. Keep only the rules the result depends on. Delete the rest.
 </p>
 
 <p align="center">
@@ -25,27 +25,27 @@
 
 ---
 
-Skills get long. Every fix adds a sentence, every edge case adds a rule, and soon a capable model has to read past a wall of instructions to do its job.
+Skills get long. Every fix makes a sentence longer and every edge case adds a rule. Soon a capable model that could handle the job on its own is boxed in by instructions and never gets to show what it can do.
 
-Skilloom goes the other way. It starts from evidence you already have, work you accepted and feedback you gave, and keeps only what the result depends on. The model gets to decide the rest.
+Skilloom starts from work that already succeeded, the deliverable you accepted and the feedback you gave, and keeps only the core. The model decides the rest on its own.
 
 ## Skills
 
-Four skills, one for each stage of a skill's life. Each installs and runs on its own.
+Four skills, one for each stage of making and using a skill. Each installs and runs on its own.
 
 | Skill | | Use it to |
 | --- | --- | --- |
 | [**distill**](skills/distill/README.md) | Spin | Turn a task you just finished and approved into a reusable skill. |
 | [**refine**](skills/refine/README.md) | Tighten | Restructure one verbose skill around its purpose. |
-| [**evolve**](skills/evolve/README.md) | Mend | Fix what actually went wrong in use, with the smallest change the evidence supports. |
-| [**consolidate**](skills/consolidate/README.md) | Join | Merge overlapping skills without losing what worked. |
+| [**evolve**](skills/evolve/README.md) | Mend | Fix what went wrong in use with the smallest change the evidence supports. |
+| [**consolidate**](skills/consolidate/README.md) | Join | Merge overlapping skills. Keep the capabilities that worked. |
 
-A few things they all share:
+All four share a few rules.
 
-- Deletion is reviewed before addition.
-- Code checks what code can. You judge the rest, from a short list of questions.
-- A shorter file is not called an improvement until it has been compared.
-- Leaving a skill unchanged is a valid result.
+- Deletion is reviewed before anything is added.
+- Code checks what code can check. For the rest, you get a short list of questions and make the call. Whether a table adds up is for code. Whether a sentence reads well is for you.
+- A shorter file is not an improvement until it has been compared with the previous version.
+- When nothing needs to change, the skill stays as it is. The report says why.
 
 ## Install
 
@@ -55,7 +55,7 @@ Paste this into your coding agent:
 Clone https://github.com/boaz-hwang/skilloom and install each of the four folders under skills/ as a separate skill in your skills directory.
 ```
 
-Skills follow the [Agent Skills](https://github.com/agentskills/agentskills) format and work with any client that reads a `SKILL.md`.
+Skills follow the [Agent Skills](https://github.com/agentskills/agentskills) format. They work with any client that reads a `SKILL.md`.
 
 If you installed distill from this repository's root in an earlier version, reinstall it from `skills/distill`.
 
@@ -94,7 +94,7 @@ python tools/validate_skill.py skills/distill
 python -m unittest discover -s tests -v
 ```
 
-CI runs the same checks on every push and pull request. Changes that make a skill shorter without losing a requirement are welcome. Bring the evidence.
+CI runs the same checks on every push and pull request. Changes that make a skill shorter are welcome. Keep every requirement, and include the evidence.
 
 ## License
 

@@ -24,4 +24,4 @@ Use refine to restructure <skill-name> around its purpose and essential requirem
 2. Review deletion first; shorten, revise, or restructure only where useful.
 3. Verify according to the impact of the changes and apply supported revisions.
 
-Refine handles one skill. A clearer file is not automatically proof of better execution performance.
+Refine handles one skill. A clearer file and better execution performance are reported as separate things.
