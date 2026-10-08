@@ -120,6 +120,23 @@ instruction in the active target. The candidate was prepared from the old baseli
 Reviewer: Do not overwrite the concurrent edit. Reconcile the candidate with the
 current target and reassess any affected verification. Preserve a rollback path.
 
+## 9. A comparison win loses the accepted format
+
+Target: `meeting-report`. The accepted artifact has a fixed table with Decision,
+Owner, Due date, and Next action columns. All four columns are required, including
+explicit markers for unknown owners and dates. Supply a fictional accepted artifact
+and its acceptance note; keep customer data out of the test.
+
+Later feedback asks for conclusions to be easier to find. A candidate replaces the
+table with a three-bullet summary. A same-session reviewer prefers its readability,
+but one action and the unknown-date markers are absent.
+
+Reviewer: Separate the accepted artifact, preserved requirements, and the new
+readability goal using the [acceptance record](acceptance-record.md) before judging.
+A readability win does not replace the table and completeness requirements. Reject
+the regressing candidate or retain it separately pending a supported revision.
+Do not reinterpret later feedback as permission to change the accepted format.
+
 ## Review across cases
 
 - Does the observed outcome support the proposed cause and claimed benefit?

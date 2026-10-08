@@ -1,0 +1,18 @@
+--- before.md
++++ after.md
+@@ -1 +1 @@
+-# Inventory report — baseline instructions
++# Inventory report — structural refinement candidate
+@@ -3,8 +3,4 @@
+-Read the supplied CSV. It has item and available columns.
+-Write a JSON object with an items array and a total integer.
+-For each CSV row, add an object with item and available to items.
+-Keep the rows in source order. Include rows with zero available stock.
+-Copy each item name exactly. Copy each quantity exactly as an integer.
+-Sum all quantities into total. Do not add products or infer missing quantities.
+-If an item or quantity is missing, or a quantity is not a nonnegative integer, stop and ask for corrected input.
+-Before delivery, check that the items match every input row and that total is their sum.
++Convert the supplied item,available CSV to JSON: items (objects with item and integer available) and integer total.
++Preserve every row in source order, including zero stock, with exact names and quantities; total must equal their sum.
++Stop and ask for corrected input if a name or quantity is missing or a quantity is not a nonnegative integer. Never infer or add data.
++Before delivery, check all rows against the source and reconcile total.

@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "item": "clips",
+      "available": 0
+    },
+    {
+      "item": "binders",
+      "available": 4
+    },
+    {
+      "item": "labels",
+      "available": 7
+    }
+  ],
+  "total": 11
+}

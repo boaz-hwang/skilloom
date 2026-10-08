@@ -1,0 +1,20 @@
+{
+  "kind": "authored fixture, not an agent run",
+  "instruction": "Report the supplied service status. If unavailable, say status could not be verified; do not invent a status.",
+  "cases": [
+    {
+      "http_status": 200,
+      "body": {
+        "status": "operational"
+      },
+      "output": "Service status: operational."
+    },
+    {
+      "http_status": 503,
+      "body": null,
+      "output": "Service status could not be verified."
+    }
+  ],
+  "decision": "no change",
+  "reason": "Both outputs follow the existing instruction; the service failure does not show an instruction defect."
+}

@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "item": "pencils",
+      "available": 8
+    },
+    {
+      "item": "notebooks",
+      "available": 5
+    },
+    {
+      "item": "folders",
+      "available": 0
+    }
+  ],
+  "total": 13
+}

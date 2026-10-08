@@ -5,13 +5,13 @@
 <h1 align="center">Skilloom</h1>
 
 <p align="center">
-  <strong>A loom for agent skills.</strong><br>
-  Make a skill from work you already finished. Keep only the rules the result depends on. Delete the rest.
+  <strong>Turn work you approved into skills you can trust.</strong><br>
+  Capture what made the result work. Refine, repair, and merge skills while checking that those requirements still hold.
 </p>
 
 <p align="center">
   <a href="README.ko.md">한국어</a> ·
-  <a href="#skills">Skills</a> ·
+  <a href="#choose-the-change-you-need">Skills</a> ·
   <a href="#install">Install</a> ·
   <a href="#use">Use</a> ·
   <a href="#contributing">Contributing</a>
@@ -25,40 +25,66 @@
 
 ---
 
-Skills get long. Every fix makes a sentence longer and every edge case adds a rule. Soon a capable model that could handle the job on its own is boxed in by instructions and never gets to show what it can do.
+Skilloom starts with a deliverable you accepted and the feedback that made it right. It helps you turn that experience into a reusable skill, then maintain the requirements as the skill changes. Shorter instructions are useful only when they still support the intended result.
 
-Skilloom starts from work that already succeeded, the deliverable you accepted and the feedback you gave, and keeps only the core. The model decides the rest on its own.
+## Choose the change you need
 
-## Used on real work
+Four independent skills. Pick one for the change in front of you; they are not a sequence you need to run.
 
-Before release, these skills ran on the author's own working skills. The numbers below come from git history.
-
-| Skill set | Skilloom skill used | SKILL.md lines | What moved to code | Requirements kept |
-| --- | --- | --- | --- | --- |
-| Wiki maintenance (6 skills merged into 5) | distill, refine, consolidate | 229 -> 128, plus 27 lines in two new reference files | Clippings folder access errors now fail instead of counting as 0 items. A new script checks the review inventory: required sources, and every item compared with the existing wiki. 12 new tests. | Most. Three were dropped (below). |
-| Meeting notes to dashboard | distill, then evolve | New skill: 69, plus a 79-line check script. Evolve: 69 -> 70, then reverted to 69 | Report content checks were in a script from the start | All. Most of the evolve change was reverted (see below). |
-
-Not every removed line was moved. In the wiki set, most went to a shared review reference, the two new reference files, or code checks. Three rules are no longer written down: the update skill's list of things to keep apart was shortened and lost "proposal vs contract" and "training design vs current rule"; the lint skill no longer checks that unlinked source paths exist; and the ingest report no longer has to say how a new source changed existing claims. A 10-item limit per clippings run and fixed targets (3-5 claims, 3-8 pages) were removed on purpose.
-
-For the meeting skill, evolve added rules after later use: put the reader's conclusion and decisions first, label undecided structures as drafts in diagrams, and re-transcribe the whole recording with a stronger model when hallucination loops span several segments. The new version won its own comparison runs. The output had drifted from the report format already approved, though, so the first two rules were reverted 8 minutes later. Only the re-transcription rule stayed. The comparison had measured against feedback from the same session, not against the approved deliverable.
-
-## Skills
-
-Four skills, one for each stage of making and using a skill. Each installs and runs on its own.
-
-| Skill | | Use it to |
+| Your situation | Skill | Scope |
 | --- | --- | --- |
-| [**distill**](skills/distill/README.md) | Spin | Turn a task you just finished and approved into a reusable skill. |
-| [**refine**](skills/refine/README.md) | Tighten | Restructure one verbose skill around its purpose. |
-| [**evolve**](skills/evolve/README.md) | Mend | Fix what went wrong in use with the smallest change the evidence supports. |
-| [**consolidate**](skills/consolidate/README.md) | Join | Merge overlapping skills. Keep the capabilities that worked. |
+| You want to reproduce work you finished and approved | [**distill**](skills/distill/README.md) | Create a new skill from the accepted result and corrections |
+| One skill needs clearer structure and fewer unnecessary instructions | [**refine**](skills/refine/README.md) | Restructure the whole skill while preserving essential requirements |
+| Actual use exposed a specific problem | [**evolve**](skills/evolve/README.md) | Make the smallest change supported by execution evidence |
+| Several skills overlap | [**consolidate**](skills/consolidate/README.md) | Merge suitable roles while retaining their useful capabilities |
 
-All four share a few rules.
+Refine and evolve differ in the **scope of change**, not simply in whether logs exist. Refine may reorganize the whole skill. Evolve stays with the observed problem; a broader rewrite belongs in a separate refinement task.
 
-- Deletion is reviewed before anything is added.
-- Code checks what code can check. For the rest, you get a short list of questions and make the call. Whether a table adds up is for code. Whether a sentence reads well is for you.
-- A shorter file is not an improvement until it has been compared with the previous version.
-- When nothing needs to change, the skill stays as it is. The report says why.
+All four share a few rules:
+
+- Review deletion before adding instructions. Keep non-obvious knowledge and essential exceptions.
+- Let code check objective requirements; leave concrete quality questions to the person who uses the result.
+- Compare against the original requirements. Fewer lines alone do not establish improvement.
+- Keep the existing skill when no useful change is supported. An unconfirmed candidate stays separate.
+
+## Where Skilloom fits
+
+Use Skilloom when you already work with an agent that reads `SKILL.md`, want to carry accepted work into future tasks, and want control over how much an existing skill changes. Each skill installs independently; no separate optimization service is required. Generated skills may still need task-specific tools and checks.
+
+Other projects address related parts of this problem. These are differences in workflow, not comparative performance claims (documentation reviewed 2026-10-08).
+
+| Project | Focus in its documentation | Skilloom's emphasis |
+| --- | --- | --- |
+| [Claudeception](https://github.com/blader/Claudeception) | Extract reusable discoveries from work sessions, with optional hooks | Start distillation from an accepted deliverable and the user's corrections |
+| [Anthropic skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | Create and improve skills with evaluations and description optimization | Separate whole-skill refinement, localized repair, and multi-skill consolidation |
+| [SkillHone](https://github.com/Tencent/SkillHone) | Repair complete skill repositories with regression tests, decision history, and local PRs | Four independently invoked skills operating in your existing agent session |
+| [EvoSkill](https://github.com/sentient-agi/EvoSkill) | Automate skill and prompt evolution using benchmarks and held-out evaluation | Start from supplied work and feedback; scale verification to the change |
+| [SkillX](https://github.com/zjunlp/SkillX) | Extract, filter, merge, and expand a hierarchical skill knowledge base | Review a supplied set of skills and confirm the concrete consolidation mapping |
+
+Human review, evaluation, and skill extraction also exist elsewhere. Skilloom's proposed value is their combination with accepted-result grounding, deletion-first review, and bounded changes. Whether that improves your work needs evidence from your tasks.
+
+## Inspect the evidence
+
+**Start with the [reproducible inventory example](examples/inventory/README.md).** It includes a reference result, requirements, before/after instructions, new input, output fixtures, a diff, and an executable checker. It demonstrates checking requirements independently of instruction length, including rejecting an output whose total is correct but whose rows are incomplete. It is an authored example, not an agent benchmark or a user-approved production run.
+
+```bash
+python3 examples/inventory/check.py
+```
+
+The example also records a **retain-baseline decision** when a candidate omits a zero-stock row, and a **no-change decision** when a service failure is already handled correctly. See [when retaining the skill is the result](examples/decisions/README.md).
+
+### Real maintenance records
+
+These records come from the author's own work. The public summaries do not include private source documents or complete execution traces, so they are not independently reproducible benchmarks.
+
+| Case | Observed result | What it establishes |
+| --- | --- | --- |
+| Wiki maintenance: 6 skills merged into 5; SKILL.md lines 229 → 128, plus 27 lines in two new reference files | Later comparison found three dropped requirements | A shorter set can still lose requirements. This is an omission-detection case, not proof of successful compression. |
+| Meeting notes: an evolve candidate won its own comparisons, then most changes were reverted 8 minutes later | The output had drifted from the approved report format; the re-transcription rule remained | The comparison target matters. A local win did not establish preservation of the accepted result. |
+
+Read the [case details and limits](examples/maintenance-records.md), including what was removed intentionally and what remains unverified.
+
+For your own comparison, use the [acceptance record](evals/acceptance-record.md) to separate the accepted result, existing requirements, and the goal of this change **before** evaluating candidates. A format pass, a model's self-rating, and human acceptance are different kinds of evidence.
 
 ## Install
 
@@ -99,7 +125,7 @@ Recommended models:
 
 ## Contributing
 
-The validator and tests check structure and Python syntax only. Outcome quality is checked by hand with the scenarios in `evals/`.
+The package validator and existing unit tests check structure and Python syntax. The inventory example checks its explicit fixture requirements; neither establishes agent performance. Evaluate actual skill behavior with the scenarios in `evals/`, keeping run evidence in an acceptance record.
 
 ```bash
 python -m pip install -r requirements-dev.txt
@@ -107,7 +133,7 @@ python tools/validate_skill.py skills/distill
 python -m unittest discover -s tests -v
 ```
 
-CI runs the same checks on every push and pull request. Changes that make a skill shorter are welcome. Keep every requirement, and include the evidence.
+CI runs package checks and the inventory fixture check on every push and pull request. Changes that make a skill clearer or smaller are welcome when requirements are preserved. Include the evidence; a justified no-change decision is also a useful evaluation result.
 
 ## License
 
