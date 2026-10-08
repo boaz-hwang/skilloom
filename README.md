@@ -36,11 +36,11 @@ Before release, these skills ran on the author's own working skills. The numbers
 | Skill set | Skilloom skill used | SKILL.md lines | What moved to code | Requirements kept |
 | --- | --- | --- | --- | --- |
 | Wiki maintenance (6 skills merged into 5) | distill, refine, consolidate | 229 -> 128, plus 27 lines in two new reference files | Clippings folder access errors now fail instead of counting as 0 items. A new script checks the review inventory: required sources, and every item compared with the existing wiki. 12 new tests. | Most. Three were dropped (below). |
-| Meeting notes to dashboard | distill, then evolve | New skill: 69, plus a 79-line check script. Evolve: 69 -> 70 | Report content checks were in a script from the start | All. Evolve extended 2 lines and added 1. |
+| Meeting notes to dashboard | distill, then evolve | New skill: 69, plus a 79-line check script. Evolve: 69 -> 70, then reverted to 69 | Report content checks were in a script from the start | All. Most of the evolve change was reverted (see below). |
 
 Not every removed line was moved. In the wiki set, most went to a shared review reference, the two new reference files, or code checks. Three rules are no longer written down: the update skill's list of things to keep apart was shortened and lost "proposal vs contract" and "training design vs current rule"; the lint skill no longer checks that unlinked source paths exist; and the ingest report no longer has to say how a new source changed existing claims. A 10-item limit per clippings run and fixed targets (3-5 claims, 3-8 pages) were removed on purpose.
 
-For the meeting skill, evolve made changes after later use: put the reader's conclusion and decisions first, label undecided structures as drafts in diagrams, and re-transcribe the whole recording with a stronger model when hallucination loops span several segments.
+For the meeting skill, evolve added rules after later use: put the reader's conclusion and decisions first, label undecided structures as drafts in diagrams, and re-transcribe the whole recording with a stronger model when hallucination loops span several segments. The new version won its own comparison runs. The output had drifted from the report format already approved, though, so the first two rules were reverted 8 minutes later. Only the re-transcription rule stayed. The comparison had measured against feedback from the same session, not against the approved deliverable.
 
 ## Skills
 
